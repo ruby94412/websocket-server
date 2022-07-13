@@ -1,7 +1,7 @@
 const WebSocketServer = require('ws');
 const express = require('express');
 // Creating a new websocket server
-const wss = new WebSocketServer.Server({port: 8080, host: "192.168.0.51"})
+const wss = new WebSocketServer.Server({port: 8080})
 const app = express();
 app.listen(8000, () => {
   // const host = app.address().address;

@@ -3,11 +3,16 @@ const express = require('express');
 // Creating a new websocket server
 const wss = new WebSocketServer.Server({port: 8080})
 const app = express();
-app.listen(8000, () => {
+app.listen(3000, () => {
   // const host = app.address().address;
   // const port = app.address().port;
   console.log("node back end is running")
 });
+app.get('/test', (req, res) => {
+  res.status(200).send({
+    foo: 'bar',
+  })
+})
 // Creating connection using websocket
 wss.on("connection", ws => {
     console.log("new client connected");

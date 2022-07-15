@@ -13,6 +13,7 @@ app.get('/test', (req, res) => {
     foo: 'bar',
   })
 })
+
 // Creating connection using websocket
 // wss.on("connection", ws => {
 //     console.log("new client connected");

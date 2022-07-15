@@ -3,7 +3,7 @@ const express = require('express');
 // Creating a new websocket server
 // const wss = new WebSocketServer.Server({port: 8080, host: '192.168.0.37'})
 const app = express();
-app.listen(8080, "47.100.26.104", () => {
+app.listen(8080, () => {
   // const host = app.address().address;
   // const port = app.address().port;
   console.log("node back end is running")

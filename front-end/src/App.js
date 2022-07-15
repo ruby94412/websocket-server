@@ -4,7 +4,7 @@ import './App.css';
 
 function App() {
   const handleButtonOnClick = async() => {
-    await axios.get('http://localhost:8080/test').then(response => {
+    await axios.get('http://47.100.26.104:8080/test').then(response => {
       console.log(response);
     });
   }

@@ -3,7 +3,7 @@ import axios from 'axios';
 import {useEffect, useState} from 'react';
 import './App.css';
 
-const ws = new WebSocket('ws://127.0.0.1:8080/websocket');
+const ws = new WebSocket('ws://47.100.26.104:8080/websocket');
 function App() {
 
   const [wsMessage, setWsMessage] = useState();

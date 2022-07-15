@@ -1,12 +1,24 @@
 import logo from './logo.svg';
 import axios from 'axios';
+import {useEffect, useState} from 'react';
 import './App.css';
 
+const ws = new WebSocket('ws://127.0.0.1:8080/websocket');
 function App() {
-  const handleButtonOnClick = async() => {
-    await axios.get('http://47.100.26.104:8080/test').then(response => {
-      console.log(response);
-    });
+
+  const [wsMessage, setWsMessage] = useState();
+  useEffect(() => {
+    ws.onopen = () => {
+      console.log('wb connected');
+    };
+    ws.onmessage = msg => {
+      console.log(msg);
+      setWsMessage(msg.data);
+    };
+  }, []);
+
+  const handleButtonOnClick = () => {
+    ws.send('test');
   }
   return (
     <div className="App">
@@ -23,6 +35,7 @@ function App() {
         >
           Learn React
         </a>
+        {wsMessage}
         <button onClick={handleButtonOnClick}>send test</button>
       </header>
     </div>

@@ -9,13 +9,23 @@ router.get('/test', (req, res) => {
   });
 });
 
-router.ws('/websocket', (ws, req) => {
-  ws.on('message', msg => {
-    console.log(msg);
-    ws.send('hello from server');
-  });
-  // console.log(req);
-});
+// router.ws('/websocket', (ws, req) => {
+//   ws.on('message', msg => {
+    
+//     ws.listeners('message').forEach(ele => {
+//       console.log(ele.name);
+//     })
+//     console.log(msg, req.ip);
+//     ws.send('hello from server2');
+//   });
+//   // console.log(req);
+// });
+
+// router.ws('/websocket', (ws, req) => {
+//   ws.on('connection', msg => {
+//     console.log('---------')
+//   });
+// });
 
 module.exports = router;
 

@@ -1,9 +1,7 @@
-import logo from './logo.svg';
-import axios from 'axios';
 import {useEffect, useState} from 'react';
 import './App.css';
 
-const ws = new WebSocket('ws://47.100.26.104:8080/websocket');
+const ws = new WebSocket('ws://47.100.26.104:8080/websockets');
 function App() {
 
   const [wsMessage, setWsMessage] = useState();
@@ -17,27 +15,9 @@ function App() {
     };
   }, []);
 
-  const handleButtonOnClick = () => {
-    ws.send('test');
-  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
         {wsMessage}
-        <button onClick={handleButtonOnClick}>send test</button>
-      </header>
     </div>
   );
 }

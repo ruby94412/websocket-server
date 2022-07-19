@@ -1,23 +1,25 @@
-import {useEffect, useState} from 'react';
+// import {useEffect, useState} from 'react';
 import './App.css';
+import Login from './ components/Login';
 
-const ws = new WebSocket('ws://47.100.26.104:8080/websockets');
+// const ws = new WebSocket('wss://192.168.0.37:8080/websockets');
 function App() {
 
-  const [wsMessage, setWsMessage] = useState();
-  useEffect(() => {
-    ws.onopen = () => {
-      console.log('wb connected');
-    };
-    ws.onmessage = msg => {
-      console.log(msg);
-      setWsMessage(msg.data);
-    };
-  }, []);
+  // const [wsMessage, setWsMessage] = useState();
+  // useEffect(() => {
+  //   ws.onopen = () => {
+  //     console.log('wb connected');
+  //   };
+  //   ws.onmessage = msg => {
+  //     console.log(msg);
+  //     setWsMessage(msg.data);
+  //   };
+  // }, []);
 
   return (
     <div className="App">
-        {wsMessage}
+        {/* {wsMessage} */}
+        <Login />
     </div>
   );
 }

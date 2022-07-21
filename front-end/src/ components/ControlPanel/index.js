@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 
-const ws = new WebSocket('ws://localhost:8080/websockets');
+const ws = new WebSocket('ws://47.100.26.104:8080/websockets');
 export default () => {
   const [wsMessage, setWsMessage] = useState();
   useEffect(() => {

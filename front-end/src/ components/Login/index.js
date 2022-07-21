@@ -1,6 +1,6 @@
 import {Button, Checkbox, Form, Input} from 'antd';
 import axios from 'axios';
-const LOCALBACKEND = 'http://localhost:8080/login';
+const LOCALBACKEND = 'http://47.100.26.104:8080/login';
 export default ({
   setIsLoggedIn,
 }) => {

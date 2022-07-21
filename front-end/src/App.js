@@ -1,25 +1,28 @@
-// import {useEffect, useState} from 'react';
-import './App.css';
+import {useState} from 'react';
 import Login from './ components/Login';
+import ControlPanel from './ components/ControlPanel';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+import './App.css';
 
-// const ws = new WebSocket('wss://192.168.0.37:8080/websockets');
 function App() {
-
-  // const [wsMessage, setWsMessage] = useState();
-  // useEffect(() => {
-  //   ws.onopen = () => {
-  //     console.log('wb connected');
-  //   };
-  //   ws.onmessage = msg => {
-  //     console.log(msg);
-  //     setWsMessage(msg.data);
-  //   };
-  // }, []);
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <div className="App">
-        {/* {wsMessage} */}
-        <Login />
+        {!isLoggedIn && <Login setIsLoggedIn={setIsLoggedIn} />}
+        {
+          isLoggedIn
+            && (
+              <BrowserRouter>
+                <Routes>
+                  <Route path="/" element={<ControlPanel />} />
+                </Routes>
+              </BrowserRouter>
+          )
+        }
     </div>
   );
 }

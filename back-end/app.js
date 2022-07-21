@@ -7,15 +7,13 @@ const app = express();
 
 const PORT = 8080;
 
-const read = require('./routes/read');
+const routes = require('./routes');
 const startWebSocketServer = require('./websockets/index');
 app.use(cors());
 app.use(express.json());
-app.use(read);
+app.use(routes);
 
-const server = app.listen(PORT, () => {
-    console.log("node back end is running")
-});
+const server = app.listen(PORT);
 
 startWebSocketServer(server);
 

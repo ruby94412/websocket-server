@@ -13,7 +13,8 @@ app.use(cors());
 app.use(express.json());
 app.use(routes);
 
-const server = app.listen(PORT);
+// local test address to be changed when deployed
+const server = app.listen(PORT, '192.168.0.37');
 
 startWebSocketServer(server);
 

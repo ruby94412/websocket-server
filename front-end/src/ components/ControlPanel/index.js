@@ -1,21 +1,39 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef} from 'react';
+import Connection from './Connection';
+import Read from './Read';
+import Write from './Write';
+import DataLog from './DataLog';
+import {initWsClient} from '../utilities/websocket';
 
-const ws = new WebSocket('ws://47.100.26.104:8080/websockets');
 export default () => {
-  const [wsMessage, setWsMessage] = useState();
-  useEffect(() => {
-    ws.onopen = () => {
-      console.log('wb connected');
-    };
-    ws.onmessage = msg => {
-      console.log(msg);
-      setWsMessage(msg.data);
-    };
-  }, []);
+  const [wsClient, setWsClient] = useState(null);
+  const [wsMessage, setWsMessage] = useState('');
+  const handleWsConnection = connected => {
+    if (connected) {
+      wsClient.close();
+    } else {
+      initWsClient({
+        setWsClient,
+        setWsMessage,
+      });
+    }
+  }
 
   return (
     <div>
-      {wsMessage}
+        <Connection handleWsConnection={handleWsConnection} />
+        {
+          wsClient
+            && <>
+              <Read
+                wsMessage={wsMessage}
+              />
+              {/* <Write />
+              <DataLog
+                currentReadingData={currentReadingData}
+              /> */}
+            </>
+        }
     </div>
-  )
-}
+  );
+};
